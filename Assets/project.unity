@@ -818,6 +818,17 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 1401266690741862957, guid: 1beb7aa3473b92747b70892d448f4944, type: 3}
   m_PrefabInstance: {fileID: 73858002}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &73858005 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8551076102812873338, guid: 1beb7aa3473b92747b70892d448f4944, type: 3}
+  m_PrefabInstance: {fileID: 73858002}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67cdc3996910ba54cab8d526b08a8de1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Valve
 --- !u!1001 &75368288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5088,6 +5099,17 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 1401266690741862957, guid: 1beb7aa3473b92747b70892d448f4944, type: 3}
   m_PrefabInstance: {fileID: 595466521}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &595466524 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8551076102812873338, guid: 1beb7aa3473b92747b70892d448f4944, type: 3}
+  m_PrefabInstance: {fileID: 595466521}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67cdc3996910ba54cab8d526b08a8de1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Valve
 --- !u!1001 &596994340
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6757,6 +6779,17 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 1401266690741862957, guid: 1beb7aa3473b92747b70892d448f4944, type: 3}
   m_PrefabInstance: {fileID: 798744205}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &798744208 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8551076102812873338, guid: 1beb7aa3473b92747b70892d448f4944, type: 3}
+  m_PrefabInstance: {fileID: 798744205}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67cdc3996910ba54cab8d526b08a8de1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Valve
 --- !u!1001 &811270418
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12206,6 +12239,7 @@ Transform:
   - {fileID: 1037127372}
   - {fileID: 1359133956}
   - {fileID: 849288837}
+  - {fileID: 1490596356}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1333538962
@@ -12473,6 +12507,17 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 1401266690741862957, guid: 1beb7aa3473b92747b70892d448f4944, type: 3}
   m_PrefabInstance: {fileID: 1349880480}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1349880483 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8551076102812873338, guid: 1beb7aa3473b92747b70892d448f4944, type: 3}
+  m_PrefabInstance: {fileID: 1349880480}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67cdc3996910ba54cab8d526b08a8de1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Valve
 --- !u!1001 &1350829465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12614,6 +12659,17 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 1401266690741862957, guid: 1beb7aa3473b92747b70892d448f4944, type: 3}
   m_PrefabInstance: {fileID: 1358336008}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1358336011 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8551076102812873338, guid: 1beb7aa3473b92747b70892d448f4944, type: 3}
+  m_PrefabInstance: {fileID: 1358336008}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67cdc3996910ba54cab8d526b08a8de1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Valve
 --- !u!1 &1359133955
 GameObject:
   m_ObjectHideFlags: 0
@@ -13532,6 +13588,17 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 1401266690741862957, guid: 1beb7aa3473b92747b70892d448f4944, type: 3}
   m_PrefabInstance: {fileID: 1466946499}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1466946502 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8551076102812873338, guid: 1beb7aa3473b92747b70892d448f4944, type: 3}
+  m_PrefabInstance: {fileID: 1466946499}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67cdc3996910ba54cab8d526b08a8de1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Valve
 --- !u!1001 &1475771335
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13594,6 +13661,128 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2314420984316199405, guid: cc894c3a9e615b747a7f155e4db32bd6, type: 3}
   m_PrefabInstance: {fileID: 1475771335}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1490596355
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1330728268}
+    m_Modifications:
+    - target: {fileID: 8371394403700878939, guid: 62c0240cc3fc4c143a97d1592b939b05, type: 3}
+      propertyPath: m_Name
+      value: ControlHub
+      objectReference: {fileID: 0}
+    - target: {fileID: 9180300282972140769, guid: 62c0240cc3fc4c143a97d1592b939b05, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -41.83969
+      objectReference: {fileID: 0}
+    - target: {fileID: 9180300282972140769, guid: 62c0240cc3fc4c143a97d1592b939b05, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.3824635
+      objectReference: {fileID: 0}
+    - target: {fileID: 9180300282972140769, guid: 62c0240cc3fc4c143a97d1592b939b05, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -23.01764
+      objectReference: {fileID: 0}
+    - target: {fileID: 9180300282972140769, guid: 62c0240cc3fc4c143a97d1592b939b05, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9180300282972140769, guid: 62c0240cc3fc4c143a97d1592b939b05, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9180300282972140769, guid: 62c0240cc3fc4c143a97d1592b939b05, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9180300282972140769, guid: 62c0240cc3fc4c143a97d1592b939b05, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9180300282972140769, guid: 62c0240cc3fc4c143a97d1592b939b05, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9180300282972140769, guid: 62c0240cc3fc4c143a97d1592b939b05, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9180300282972140769, guid: 62c0240cc3fc4c143a97d1592b939b05, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8371394403700878939, guid: 62c0240cc3fc4c143a97d1592b939b05, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1490596358}
+    - targetCorrespondingSourceObject: {fileID: 8371394403700878939, guid: 62c0240cc3fc4c143a97d1592b939b05, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1490596359}
+  m_SourcePrefab: {fileID: 100100000, guid: 62c0240cc3fc4c143a97d1592b939b05, type: 3}
+--- !u!4 &1490596356 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9180300282972140769, guid: 62c0240cc3fc4c143a97d1592b939b05, type: 3}
+  m_PrefabInstance: {fileID: 1490596355}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1490596357 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8371394403700878939, guid: 62c0240cc3fc4c143a97d1592b939b05, type: 3}
+  m_PrefabInstance: {fileID: 1490596355}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1490596358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490596357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd49c0f804fba204aae156fa543ce98c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmController
+  sensors:
+  - {fileID: 2088506676}
+  - {fileID: 1949033391}
+  - {fileID: 1808952970}
+  - {fileID: 1830443800}
+  - {fileID: 1720352290}
+  - {fileID: 101920443}
+  - {fileID: 1136176845}
+  - {fileID: 1665993415}
+  - {fileID: 1974647156}
+  valves:
+  - {fileID: 2091425710}
+  - {fileID: 798744208}
+  - {fileID: 73858005}
+  - {fileID: 1358336011}
+  - {fileID: 1349880483}
+  - {fileID: 1466946502}
+  - {fileID: 2035587671}
+  - {fileID: 595466524}
+  - {fileID: 1654187694}
+  tank: {fileID: 465208072}
+  alertBelow: 15
+  dryPlots: []
+  tankAlert: 0
+--- !u!114 &1490596359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490596357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c9a0bfa4f3f0c944a41bb1b88f65f07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Dashboard
+  farm: {fileID: 1490596358}
 --- !u!1001 &1496964157
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15526,6 +15715,17 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 1401266690741862957, guid: 1beb7aa3473b92747b70892d448f4944, type: 3}
   m_PrefabInstance: {fileID: 1654187691}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1654187694 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8551076102812873338, guid: 1beb7aa3473b92747b70892d448f4944, type: 3}
+  m_PrefabInstance: {fileID: 1654187691}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67cdc3996910ba54cab8d526b08a8de1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Valve
 --- !u!1001 &1654899318
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19674,6 +19874,17 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 1401266690741862957, guid: 1beb7aa3473b92747b70892d448f4944, type: 3}
   m_PrefabInstance: {fileID: 2035587668}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2035587671 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8551076102812873338, guid: 1beb7aa3473b92747b70892d448f4944, type: 3}
+  m_PrefabInstance: {fileID: 2035587668}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67cdc3996910ba54cab8d526b08a8de1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Valve
 --- !u!1001 &2037645052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20604,6 +20815,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9065084247248817431, guid: 1beb7aa3473b92747b70892d448f4944, type: 3}
   m_PrefabInstance: {fileID: 6295274110113848755}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2091425710 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8551076102812873338, guid: 1beb7aa3473b92747b70892d448f4944, type: 3}
+  m_PrefabInstance: {fileID: 6295274110113848755}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67cdc3996910ba54cab8d526b08a8de1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Valve
 --- !u!1001 &2098606015
 PrefabInstance:
   m_ObjectHideFlags: 0
