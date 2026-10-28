@@ -18,4 +18,9 @@ public class WaterTank : MonoBehaviour
     {
         level = Mathf.Clamp(level - amount, 0f, 100f);
     }
+
+    public void Fill(float amount)
+    {
+        level = Mathf.Clamp(level + amount, 0f, 100f);
+    }
 }

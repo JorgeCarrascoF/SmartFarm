@@ -130,5 +130,5 @@ MonoBehaviour:
   openBelow: 30
   closeAbove: 70
   waterPerSecond: 6
-  tankCostPerSecond: 1.5
+  tankCostPerSecond: 0.5
   isOpen: 0
