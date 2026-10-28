@@ -1049,6 +1049,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5913493736476480615, guid: df1c59486edbb164993afb23835953e5, type: 3}
   m_PrefabInstance: {fileID: 95565084}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &101920441
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 101920442}
+  - component: {fileID: 101920443}
+  m_Layer: 0
+  m_Name: SoilSensor_6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &101920442
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101920441}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.2, y: -4.59171, z: 112.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1933713249}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &101920443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101920441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 629c9639d5d208949ae4db60ca64710c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoilSensor
+  moisture: 60
+  dryRate: 1.5
+  evaporation: 1
 --- !u!1001 &103935970
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8782,6 +8829,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 236613851542017295, guid: fa49840604ff130468948a54c8bb060f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 115339021}
+    - targetCorrespondingSourceObject: {fileID: 236613851542017295, guid: fa49840604ff130468948a54c8bb060f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 250596351284052240}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa49840604ff130468948a54c8bb060f, type: 3}
 --- !u!1001 &990196118
@@ -9843,6 +9893,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2314420984316199405, guid: cc894c3a9e615b747a7f155e4db32bd6, type: 3}
   m_PrefabInstance: {fileID: 1126323446}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1136176843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1136176844}
+  - component: {fileID: 1136176845}
+  m_Layer: 0
+  m_Name: SoilSensor_7
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1136176844
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136176843}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -99.5, y: -4.59171, z: 231.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1933713249}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1136176845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136176843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 629c9639d5d208949ae4db60ca64710c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoilSensor
+  moisture: 60
+  dryRate: 1.5
+  evaporation: 1
 --- !u!1001 &1138894295
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14965,6 +15062,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5913493736476480615, guid: df1c59486edbb164993afb23835953e5, type: 3}
   m_PrefabInstance: {fileID: 1658438198}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1665993413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1665993414}
+  - component: {fileID: 1665993415}
+  m_Layer: 0
+  m_Name: SoilSensor_8
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1665993414
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665993413}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.1, y: -4.59171, z: 231.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1933713249}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1665993415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665993413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 629c9639d5d208949ae4db60ca64710c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoilSensor
+  moisture: 60
+  dryRate: 1.5
+  evaporation: 1
 --- !u!1001 &1669380763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15500,6 +15644,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2762656473396800032, guid: 2f16bd12e86c0204894cd2aec345b79d, type: 3}
   m_PrefabInstance: {fileID: 1715914477}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1720352288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1720352289}
+  - component: {fileID: 1720352290}
+  m_Layer: 0
+  m_Name: SoilSensor_5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1720352289
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720352288}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -98.4, y: -4.59171, z: 112.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1933713249}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1720352290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720352288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 629c9639d5d208949ae4db60ca64710c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoilSensor
+  moisture: 60
+  dryRate: 1.5
+  evaporation: 1
 --- !u!1001 &1725583863
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16440,6 +16631,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5913493736476480615, guid: df1c59486edbb164993afb23835953e5, type: 3}
   m_PrefabInstance: {fileID: 1805816184}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1808952968
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1808952969}
+  - component: {fileID: 1808952970}
+  m_Layer: 0
+  m_Name: SoilSensor_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1808952969
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808952968}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -203.7, y: -4.59171, z: 6.5451965}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1933713249}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1808952970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808952968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 629c9639d5d208949ae4db60ca64710c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoilSensor
+  moisture: 60
+  dryRate: 1.5
+  evaporation: 1
 --- !u!1001 &1810082161
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16564,6 +16802,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5913493736476480615, guid: df1c59486edbb164993afb23835953e5, type: 3}
   m_PrefabInstance: {fileID: 1823135210}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1830443798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1830443799}
+  - component: {fileID: 1830443800}
+  m_Layer: 0
+  m_Name: SoilSensor_4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1830443799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830443798}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -203.7, y: -4.59171, z: 112.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1933713249}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1830443800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830443798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 629c9639d5d208949ae4db60ca64710c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoilSensor
+  moisture: 60
+  dryRate: 1.5
+  evaporation: 1
 --- !u!1001 &1848686472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17566,6 +17851,46 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
   m_PrefabInstance: {fileID: 1799252024}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1933713248
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1933713249}
+  m_Layer: 0
+  m_Name: Sensors
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1933713249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933713248}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 318.81464, y: 12.59171, z: 293.4548}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2088506675}
+  - {fileID: 1949033390}
+  - {fileID: 1808952969}
+  - {fileID: 1830443799}
+  - {fileID: 1720352289}
+  - {fileID: 101920442}
+  - {fileID: 1136176844}
+  - {fileID: 1665993414}
+  - {fileID: 1974647155}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1934514952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17685,6 +18010,53 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f32fc89859f16ec49bc857008a5ed9c5, type: 3}
+--- !u!1 &1949033389
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1949033390}
+  - component: {fileID: 1949033391}
+  m_Layer: 0
+  m_Name: SoilSensor_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1949033390
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949033389}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 12.6, y: -4.59171, z: 6.5451965}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1933713249}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1949033391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949033389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 629c9639d5d208949ae4db60ca64710c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoilSensor
+  moisture: 60
+  dryRate: 1.5
+  evaporation: 1
 --- !u!1001 &1954400425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17995,6 +18367,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5913493736476480615, guid: df1c59486edbb164993afb23835953e5, type: 3}
   m_PrefabInstance: {fileID: 1971679711}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1974647154
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1974647155}
+  - component: {fileID: 1974647156}
+  m_Layer: 0
+  m_Name: SoilSensor_9
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1974647155
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974647154}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -205.7, y: -4.59171, z: 231.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1933713249}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1974647156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974647154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 629c9639d5d208949ae4db60ca64710c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoilSensor
+  moisture: 60
+  dryRate: 1.5
+  evaporation: 1
 --- !u!1001 &1978989963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19332,6 +19751,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5913493736476480615, guid: df1c59486edbb164993afb23835953e5, type: 3}
   m_PrefabInstance: {fileID: 2085146468}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2088506674
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2088506675}
+  - component: {fileID: 2088506676}
+  m_Layer: 0
+  m_Name: SoilSensor_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2088506675
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088506674}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -92.81464, y: -4.59171, z: 6.5451965}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1933713249}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2088506676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088506674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 629c9639d5d208949ae4db60ca64710c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoilSensor
+  moisture: 60
+  dryRate: 1.5
+  evaporation: 1
 --- !u!1001 &2090253792
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19653,19 +20119,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1037127372}
     m_Modifications:
     - target: {fileID: 3665261445591304356, guid: 566de4723ab3cdb44a22d2593d70d325, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 579.0594
+      value: 1.4594116
       objectReference: {fileID: 0}
     - target: {fileID: 3665261445591304356, guid: 566de4723ab3cdb44a22d2593d70d325, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.0618925
+      value: 0.06189251
       objectReference: {fileID: 0}
     - target: {fileID: 3665261445591304356, guid: 566de4723ab3cdb44a22d2593d70d325, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 329.16943
+      value: -5.8305664
       objectReference: {fileID: 0}
     - target: {fileID: 3665261445591304356, guid: 566de4723ab3cdb44a22d2593d70d325, type: 3}
       propertyPath: m_LocalRotation.w
@@ -19704,6 +20170,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 566de4723ab3cdb44a22d2593d70d325, type: 3}
+--- !u!4 &250596351284052240 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3665261445591304356, guid: 566de4723ab3cdb44a22d2593d70d325, type: 3}
+  m_PrefabInstance: {fileID: 250596351284052239}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &291691918083794070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19830,4 +20301,4 @@ SceneRoots:
   - {fileID: 1250216739}
   - {fileID: 891709383}
   - {fileID: 1330728268}
-  - {fileID: 250596351284052239}
+  - {fileID: 1933713249}
