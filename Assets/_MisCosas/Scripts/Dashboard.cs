@@ -22,6 +22,21 @@ public class Dashboard : MonoBehaviour
         y += 8;
         GUI.Label(new Rect(20, y, 220, 22), $"Tank: {farm.tank.level:0} %" + (farm.tankAlert ? "  LOW" : ""));
         DrawBar(new Rect(20, y + 22, 200, 10), farm.tank.level / 100f);
+
+        DrawWorkers(y + 50);
+    }
+
+    void DrawWorkers(float top)
+    {
+        top += 10;
+        GUI.Box(new Rect(10, top, 470, 40 + farm.workers.Count * 22), $"Workers ({farm.jobs.Count} open jobs)");
+
+        float y = top + 26;
+        foreach (var worker in farm.workers)
+        {
+            GUI.Label(new Rect(20, y, 450, 22), $"{worker.name}   {worker.StatsText}   {worker.Activity}");
+            y += 22;
+        }
     }
 
     static void DrawBar(Rect area, float fill)

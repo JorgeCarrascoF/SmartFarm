@@ -1,39 +1,44 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-// Waits at his spawn point. A low tank comes first, then the driest plots, nearest first.
-// Each job is claimed by one technician at a time. When he runs out of work he walks home.
+// Waits at his spawn point until the FarmController gives him a job. He goes there, does it, and walks home.
+// If he gets a new job on the way home he takes it.
 [RequireComponent(typeof(NavMeshAgent))]
 public class Technician : MonoBehaviour
 {
     enum State { Waiting, Going, Working, Returning }
-    enum Job { None, Plot, Tank }
 
     public FarmController farm;
     public float workTime = 4f;        // seconds spent at a plot or at the tank
-    public float waterGiven = 30f;     // moisture added to a plot, 0 to just visit
+    public float waterGiven = 30f;     // moisture added to a plot
     public float tankRefill = 60f;     // percent added to the tank
     public float walkSpeed = 3f;       // when there is nothing to do
     public float runSpeed = 8f;        // when he is on his way to a job
 
-    static readonly HashSet<SoilSensor> claimedPlots = new HashSet<SoilSensor>();
-    static bool tankClaimed;
-
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-    static void ResetClaims()
-    {
-        claimedPlots.Clear();
-        tankClaimed = false;
-    }
+    public AvatarDatabase.Record stats;    // null for a worker placed by hand
 
     NavMeshAgent agent;
     State state = State.Waiting;
-    Job job = Job.None;
-    SoilSensor plot;
-    Object unreachable;                // last thing with no NavMesh nearby, so the warning is printed only once
+    Job job;
     Vector3 home;
     float timer;
+
+    public bool IsFree => state == State.Waiting || state == State.Returning;
+    public float StrengthFactor => stats != null ? stats.StrengthFactor : 1f;
+    public float IrrigationFactor => stats != null ? stats.IrrigationFactor : 1f;
+
+    // Text for the dashboard.
+    public string StatsText => stats == null ? "" : $"Spd {stats.speed}  Str {stats.strength}  Irr {stats.irrigation}  Ani {stats.animalHandling}";
+
+    public string Activity
+    {
+        get
+        {
+            if (job == null) return state == State.Returning ? "going home" : "idle";
+            string place = job.type == JobType.Tank ? "the tank" : job.plot.name;
+            return (state == State.Working ? "working at " : "going to ") + place;
+        }
+    }
 
     void Awake()
     {
@@ -45,6 +50,7 @@ public class Technician : MonoBehaviour
     // The stats of this person scale how fast he moves and how much each job gets done.
     public void Apply(AvatarDatabase.Record record)
     {
+        stats = record;
         walkSpeed *= record.SpeedFactor;
         runSpeed *= record.SpeedFactor;
         tankRefill *= record.StrengthFactor;
@@ -60,16 +66,13 @@ public class Technician : MonoBehaviour
     void Start()
     {
         if (!agent.isOnNavMesh) Debug.LogWarning("Technician: not standing on the NavMesh, move him onto the blue area", this);
+        farm.Register(this);
     }
 
     void Update()
     {
         switch (state)
         {
-            case State.Waiting:
-                LookForWork();
-                break;
-
             case State.Going:
                 if (Arrived())
                 {
@@ -84,95 +87,40 @@ public class Technician : MonoBehaviour
                 break;
 
             case State.Returning:
-                // New work can show up while he walks home, so keep looking.
-                if (!LookForWork() && Arrived()) state = State.Waiting;
+                if (Arrived()) state = State.Waiting;
                 break;
         }
     }
 
-    // The tank wins over the plots. Returns true if he set off for something.
-    bool LookForWork()
+    // Called by the FarmController. False if the job is not on the NavMesh.
+    public bool Assign(Job newJob)
     {
-        if (farm.tankAlert && !tankClaimed && GoTo(farm.tank.transform.position, 30f, farm.tank))
-        {
-            tankClaimed = true;
-            job = Job.Tank;
-            return true;
-        }
+        float reach = newJob.type == JobType.Tank ? 30f : 15f;
+        if (!NavMesh.SamplePosition(newJob.position, out NavMeshHit hit, reach, NavMesh.AllAreas)) return false;
 
-        SoilSensor next = NearestFreePlot();
-        if (next != null && GoTo(next.transform.position, 15f, next))
-        {
-            claimedPlots.Add(next);
-            plot = next;
-            job = Job.Plot;
-            return true;
-        }
-
-        return false;
+        job = newJob;
+        agent.speed = runSpeed;
+        agent.SetDestination(hit.position);
+        state = State.Going;
+        return true;
     }
 
     void FinishJob()
     {
-        if (job == Job.Tank)
-        {
-            farm.tank.Fill(tankRefill);
-            tankClaimed = false;
-        }
-        else if (job == Job.Plot)
-        {
-            plot.AddWater(waterGiven);
-            claimedPlots.Remove(plot);
-        }
-        job = Job.None;
+        if (job.type == JobType.Tank) farm.tank.Fill(tankRefill);
+        else job.plot.AddWater(waterGiven);
 
-        if (LookForWork()) return;
+        farm.Complete(job);
+        job = null;
 
         agent.speed = walkSpeed;
         agent.SetDestination(home);
         state = State.Returning;
     }
 
-    bool GoTo(Vector3 position, float reach, Object context)
-    {
-        if (NavMesh.SamplePosition(position, out NavMeshHit hit, reach, NavMesh.AllAreas))
-        {
-            agent.speed = runSpeed;
-            agent.SetDestination(hit.position);
-            state = State.Going;
-            return true;
-        }
-
-        if (context != unreachable)
-        {
-            unreachable = context;
-            Debug.LogWarning($"Technician: no NavMesh within {reach} m of {context.name}", context);
-        }
-        return false;
-    }
-
-    // The closest dry plot that no other technician has taken, or null if there is none.
-    SoilSensor NearestFreePlot()
-    {
-        SoilSensor best = null;
-        float bestDistance = float.MaxValue;
-        foreach (var candidate in farm.dryPlots)
-        {
-            if (claimedPlots.Contains(candidate)) continue;
-            float distance = (candidate.transform.position - transform.position).sqrMagnitude;
-            if (distance < bestDistance)
-            {
-                best = candidate;
-                bestDistance = distance;
-            }
-        }
-        return best;
-    }
-
     void OnDestroy()
     {
-        if (job == Job.Tank) tankClaimed = false;
-        else if (job == Job.Plot) claimedPlots.Remove(plot);
+        if (job != null && farm != null) farm.Release(job);
     }
 
     bool Arrived()
