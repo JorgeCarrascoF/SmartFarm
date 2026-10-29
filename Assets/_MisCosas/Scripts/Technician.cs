@@ -26,6 +26,7 @@ public class Technician : MonoBehaviour
     public bool IsFree => state == State.Waiting || state == State.Returning;
     public float StrengthFactor => stats != null ? stats.StrengthFactor : 1f;
     public float IrrigationFactor => stats != null ? stats.IrrigationFactor : 1f;
+    public float AnimalFactor => stats != null ? stats.AnimalFactor : 1f;
 
     // Text for the dashboard.
     public string StatsText => stats == null ? "" : $"Spd {stats.speed}  Str {stats.strength}  Irr {stats.irrigation}  Ani {stats.animalHandling}";
@@ -35,7 +36,7 @@ public class Technician : MonoBehaviour
         get
         {
             if (job == null) return state == State.Returning ? "going home" : "idle";
-            string place = job.type == JobType.Tank ? "the tank" : job.plot.name;
+            string place = job.type == JobType.Tank ? "the tank" : job.type == JobType.Feed ? job.animal.name : job.plot.name;
             return (state == State.Working ? "working at " : "going to ") + place;
         }
     }
@@ -76,7 +77,7 @@ public class Technician : MonoBehaviour
             case State.Going:
                 if (Arrived())
                 {
-                    timer = workTime;
+                    timer = job.type == JobType.Feed ? workTime / AnimalFactor : workTime;      // good handlers calm them quickly
                     state = State.Working;
                 }
                 break;
@@ -108,6 +109,7 @@ public class Technician : MonoBehaviour
     void FinishJob()
     {
         if (job.type == JobType.Tank) farm.tank.Fill(tankRefill);
+        else if (job.type == JobType.Feed) job.animal.Feed();
         else job.plot.AddWater(waterGiven);
 
         farm.Complete(job);

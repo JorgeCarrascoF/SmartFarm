@@ -13,9 +13,16 @@ public class FarmController : MonoBehaviour
 
     public List<SoilSensor> dryPlots = new List<SoilSensor>();
     public bool tankAlert;
+    public int hungryAnimals;
 
+    public Animal[] animals;
     public List<Technician> workers = new List<Technician>();
     public List<Job> jobs = new List<Job>();
+
+    void Start()
+    {
+        animals = FindObjectsByType<Animal>(FindObjectsSortMode.None);
+    }
 
     void Update()
     {
@@ -24,6 +31,10 @@ public class FarmController : MonoBehaviour
             if (s.moisture < alertBelow) dryPlots.Add(s);
 
         tankAlert = tank.Low;
+
+        hungryAnimals = 0;
+        foreach (var a in animals)
+            if (a.IsHungry) hungryAnimals++;
 
         UpdateJobs();
         AssignJobs();
@@ -43,19 +54,34 @@ public class FarmController : MonoBehaviour
     public void Release(Job job)
     {
         job.worker = null;
+        if (job.animal != null) job.animal.held = false;
     }
 
     void UpdateJobs()
     {
-        // Nobody took it and it is not needed any more (a valve got there first).
-        jobs.RemoveAll(j => j.worker == null && (j.type == JobType.Tank ? !tankAlert : !dryPlots.Contains(j.plot)));
+        // Nobody took it and it is not needed any more (a valve or a bowl of food got there first).
+        jobs.RemoveAll(j => j.worker == null && !StillNeeded(j));
 
         if (tankAlert && !jobs.Exists(j => j.type == JobType.Tank))
             jobs.Add(new Job { type = JobType.Tank, position = tank.transform.position });
 
+        foreach (var animal in animals)
+            if (animal.IsHungry && !jobs.Exists(j => j.animal == animal))
+                jobs.Add(new Job { type = JobType.Feed, animal = animal, position = animal.transform.position });
+
         foreach (var plot in dryPlots)
             if (!jobs.Exists(j => j.plot == plot))
                 jobs.Add(new Job { type = JobType.Plot, plot = plot, position = plot.transform.position });
+    }
+
+    bool StillNeeded(Job job)
+    {
+        switch (job.type)
+        {
+            case JobType.Tank: return tankAlert;
+            case JobType.Feed: return job.animal.IsHungry;
+            default: return dryPlots.Contains(job.plot);
+        }
     }
 
     void AssignJobs()
@@ -65,6 +91,9 @@ public class FarmController : MonoBehaviour
         foreach (var job in jobs)
         {
             if (job.worker != null || job.unreachable) continue;
+
+            // Animals wander, so look for the place where it is now.
+            if (job.type == JobType.Feed) job.position = job.animal.transform.position;
 
             Technician best = null;
             float bestScore = 0f;
@@ -83,6 +112,7 @@ public class FarmController : MonoBehaviour
             if (best.Assign(job))
             {
                 job.worker = best;
+                if (job.type == JobType.Feed) job.animal.held = true;       // it waits for him
             }
             else
             {
@@ -92,16 +122,28 @@ public class FarmController : MonoBehaviour
         }
     }
 
-    // The tank always goes first, then the driest plot.
+    // The tank first, then the hungriest animal, then the driest plot.
     float Priority(Job job)
     {
-        return job.type == JobType.Tank ? -1f : job.plot.moisture;
+        switch (job.type)
+        {
+            case JobType.Tank: return -10f;
+            case JobType.Feed: return -5f - job.animal.hunger / 100f;
+            default: return job.plot.moisture;
+        }
     }
 
-    // Strength matters for the tank, irrigation for the plots, and a long walk counts against the worker.
+    // Each job asks for a different stat, and a long walk counts against the worker.
     float Score(Technician worker, Job job)
     {
-        float stat = job.type == JobType.Tank ? worker.StrengthFactor : worker.IrrigationFactor;
+        float stat;
+        switch (job.type)
+        {
+            case JobType.Tank: stat = worker.StrengthFactor; break;
+            case JobType.Feed: stat = worker.AnimalFactor; break;
+            default: stat = worker.IrrigationFactor; break;
+        }
+
         float distance = Vector3.Distance(worker.transform.position, job.position);
         return stat / (1f + distance / distanceWeight);
     }

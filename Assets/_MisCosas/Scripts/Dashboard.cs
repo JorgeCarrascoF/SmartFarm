@@ -29,7 +29,7 @@ public class Dashboard : MonoBehaviour
     void DrawWorkers(float top)
     {
         top += 10;
-        GUI.Box(new Rect(10, top, 470, 40 + farm.workers.Count * 22), $"Workers ({farm.jobs.Count} open jobs)");
+        GUI.Box(new Rect(10, top, 470, 40 + farm.workers.Count * 22), $"Workers ({farm.jobs.Count} open jobs, {farm.hungryAnimals} hungry animals)");
 
         float y = top + 26;
         foreach (var worker in farm.workers)
