@@ -42,6 +42,21 @@ public class Technician : MonoBehaviour
         agent.speed = walkSpeed;
     }
 
+    // The stats of this person scale how fast he moves and how much each job gets done.
+    public void Apply(AvatarDatabase.Record record)
+    {
+        walkSpeed *= record.SpeedFactor;
+        runSpeed *= record.SpeedFactor;
+        tankRefill *= record.StrengthFactor;
+        waterGiven *= record.IrrigationFactor;
+        workTime /= (record.StrengthFactor + record.IrrigationFactor) / 2f;
+        agent.speed = walkSpeed;
+
+        // The Animator controller expects a run at 4 and a walk at 1.5, so slower people play the clips slower.
+        var animation = GetComponent<CharacterAnimation>();
+        if (animation != null) animation.speedScale = runSpeed / 4f;
+    }
+
     void Start()
     {
         if (!agent.isOnNavMesh) Debug.LogWarning("Technician: not standing on the NavMesh, move him onto the blue area", this);
