@@ -8,12 +8,13 @@ public class FarmController : MonoBehaviour
     public Valve[] valves;
     public WaterTank tank;
 
-    public float alertBelow = 15f;                         // a plot this dry needs a worker
+    public float alertBelow = 15f;                         // the dashboard marks a plot this dry
+    public float urgentBelow = 5f;                         // a plot this dry gets a worker, whatever the valve is doing
     public float distanceWeight = 100f;                    // every this many metres halve a worker's score
 
-    public List<SoilSensor> dryPlots = new List<SoilSensor>();
     public bool tankAlert;
     public int hungryAnimals;
+    public int brokenValves;
 
     public Animal[] animals;
     public List<Technician> workers = new List<Technician>();
@@ -26,15 +27,15 @@ public class FarmController : MonoBehaviour
 
     void Update()
     {
-        dryPlots.Clear();
-        foreach (var s in sensors)
-            if (s.moisture < alertBelow) dryPlots.Add(s);
-
         tankAlert = tank.Low;
 
         hungryAnimals = 0;
         foreach (var a in animals)
             if (a.IsHungry) hungryAnimals++;
+
+        brokenValves = 0;
+        foreach (var v in valves)
+            if (v.isBroken) brokenValves++;
 
         UpdateJobs();
         AssignJobs();
@@ -59,7 +60,7 @@ public class FarmController : MonoBehaviour
 
     void UpdateJobs()
     {
-        // Nobody took it and it is not needed any more (a valve or a bowl of food got there first).
+        // Nobody took it and it is not needed any more (food got there first).
         jobs.RemoveAll(j => j.worker == null && !StillNeeded(j));
 
         if (tankAlert && !jobs.Exists(j => j.type == JobType.Tank))
@@ -69,9 +70,13 @@ public class FarmController : MonoBehaviour
             if (animal.IsHungry && !jobs.Exists(j => j.animal == animal))
                 jobs.Add(new Job { type = JobType.Feed, animal = animal, position = animal.transform.position });
 
-        foreach (var plot in dryPlots)
-            if (!jobs.Exists(j => j.plot == plot))
+        foreach (var plot in sensors)
+            if (plot.moisture < urgentBelow && !jobs.Exists(j => j.plot == plot))
                 jobs.Add(new Job { type = JobType.Plot, plot = plot, position = plot.transform.position });
+
+        foreach (var valve in valves)
+            if (valve.isBroken && !jobs.Exists(j => j.valve == valve))
+                jobs.Add(new Job { type = JobType.Repair, valve = valve, position = valve.transform.position });
     }
 
     bool StillNeeded(Job job)
@@ -80,7 +85,8 @@ public class FarmController : MonoBehaviour
         {
             case JobType.Tank: return tankAlert;
             case JobType.Feed: return job.animal.IsHungry;
-            default: return dryPlots.Contains(job.plot);
+            case JobType.Plot: return job.plot.moisture < urgentBelow;
+            default: return job.valve.isBroken;
         }
     }
 
@@ -122,14 +128,15 @@ public class FarmController : MonoBehaviour
         }
     }
 
-    // The tank first, then the hungriest animal, then the driest plot.
+    // The tank first, then a plot about to die, then the hungriest animal, then the broken valve whose plot is driest.
     float Priority(Job job)
     {
         switch (job.type)
         {
             case JobType.Tank: return -10f;
+            case JobType.Plot: return -8f + job.plot.moisture / 100f;
             case JobType.Feed: return -5f - job.animal.hunger / 100f;
-            default: return job.plot.moisture;
+            default: return job.valve.sensor.moisture;
         }
     }
 

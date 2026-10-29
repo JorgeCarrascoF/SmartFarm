@@ -13,7 +13,7 @@ public class Dashboard : MonoBehaviour
         for (int i = 0; i < farm.sensors.Length; i++)
         {
             float moisture = farm.sensors[i].moisture;
-            string valve = farm.valves[i].isOpen ? "open" : "closed";
+            string valve = farm.valves[i].isBroken ? "BROKEN" : farm.valves[i].isOpen ? "open" : "closed";
             string alert = moisture < farm.alertBelow ? "  DRY" : "";
             GUI.Label(new Rect(20, y, 220, 22), $"Plot {i + 1}: {moisture:0} %   valve {valve}{alert}");
             y += 22;
@@ -29,7 +29,7 @@ public class Dashboard : MonoBehaviour
     void DrawWorkers(float top)
     {
         top += 10;
-        GUI.Box(new Rect(10, top, 470, 40 + farm.workers.Count * 22), $"Workers ({farm.jobs.Count} open jobs, {farm.hungryAnimals} hungry animals)");
+        GUI.Box(new Rect(10, top, 470, 40 + farm.workers.Count * 22), $"Workers ({farm.jobs.Count} open jobs, {farm.hungryAnimals} hungry animals, {farm.brokenValves} broken valves)");
 
         float y = top + 26;
         foreach (var worker in farm.workers)

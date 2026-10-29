@@ -9,9 +9,9 @@ public class Technician : MonoBehaviour
     enum State { Waiting, Going, Working, Returning }
 
     public FarmController farm;
-    public float workTime = 4f;        // seconds spent at a plot or at the tank
-    public float waterGiven = 30f;     // moisture added to a plot
+    public float workTime = 4f;        // seconds spent on a job, before the stats
     public float tankRefill = 60f;     // percent added to the tank
+    public float waterGiven = 30f;     // moisture added to a plot that is about to die
     public float walkSpeed = 3f;       // when there is nothing to do
     public float runSpeed = 8f;        // when he is on his way to a job
 
@@ -36,7 +36,10 @@ public class Technician : MonoBehaviour
         get
         {
             if (job == null) return state == State.Returning ? "going home" : "idle";
-            string place = job.type == JobType.Tank ? "the tank" : job.type == JobType.Feed ? job.animal.name : job.plot.name;
+            string place = job.type == JobType.Tank ? "the tank"
+                : job.type == JobType.Feed ? job.animal.name
+                : job.type == JobType.Plot ? job.plot.name
+                : job.valve.name;
             return (state == State.Working ? "working at " : "going to ") + place;
         }
     }
@@ -48,7 +51,7 @@ public class Technician : MonoBehaviour
         agent.speed = walkSpeed;
     }
 
-    // The stats of this person scale how fast he moves and how much each job gets done.
+    // The stats of this person scale how fast he moves and how well each kind of job goes.
     public void Apply(AvatarDatabase.Record record)
     {
         stats = record;
@@ -56,7 +59,6 @@ public class Technician : MonoBehaviour
         runSpeed *= record.SpeedFactor;
         tankRefill *= record.StrengthFactor;
         waterGiven *= record.IrrigationFactor;
-        workTime /= (record.StrengthFactor + record.IrrigationFactor) / 2f;
         agent.speed = walkSpeed;
 
         // The Animator controller expects a run at 4 and a walk at 1.5, so slower people play the clips slower.
@@ -77,7 +79,7 @@ public class Technician : MonoBehaviour
             case State.Going:
                 if (Arrived())
                 {
-                    timer = job.type == JobType.Feed ? workTime / AnimalFactor : workTime;      // good handlers calm them quickly
+                    timer = WorkTime(job);
                     state = State.Working;
                 }
                 break;
@@ -106,11 +108,23 @@ public class Technician : MonoBehaviour
         return true;
     }
 
+    // Whoever is better at the kind of job gets it done sooner.
+    float WorkTime(Job j)
+    {
+        switch (j.type)
+        {
+            case JobType.Tank: return workTime / StrengthFactor;
+            case JobType.Feed: return workTime / AnimalFactor;
+            default: return workTime / IrrigationFactor;
+        }
+    }
+
     void FinishJob()
     {
         if (job.type == JobType.Tank) farm.tank.Fill(tankRefill);
         else if (job.type == JobType.Feed) job.animal.Feed();
-        else job.plot.AddWater(waterGiven);
+        else if (job.type == JobType.Plot) job.plot.AddWater(waterGiven);
+        else job.valve.Repair();
 
         farm.Complete(job);
         job = null;
