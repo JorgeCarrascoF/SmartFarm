@@ -4,10 +4,12 @@ using UnityEngine;
 public class Dashboard : MonoBehaviour
 {
     public FarmController farm;
+    public DayNightCycle clock;          // optional, shows the time of day
 
     void OnGUI()
     {
-        GUI.Box(new Rect(10, 10, 240, 40 + farm.sensors.Length * 22 + 50), "Smart Farm");
+        string title = clock != null ? $"Smart Farm   {clock.TimeText}" : "Smart Farm";
+        GUI.Box(new Rect(10, 10, 240, 40 + farm.sensors.Length * 22 + 50), title);
 
         float y = 36;
         for (int i = 0; i < farm.sensors.Length; i++)
