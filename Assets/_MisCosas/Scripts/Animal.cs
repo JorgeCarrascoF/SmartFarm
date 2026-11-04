@@ -23,7 +23,10 @@ public class Animal : MonoBehaviour
     bool walking;
     string playing;
 
+    public string displayName;              // shown on the status board, the object's name if empty
+
     public bool IsHungry => hunger > hungryAbove;
+    public string DisplayName => string.IsNullOrEmpty(displayName) ? name : displayName;
 
     void Awake()
     {
