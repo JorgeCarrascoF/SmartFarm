@@ -35,6 +35,22 @@ public class Technician : MonoBehaviour
     // Text for the dashboard.
     public string StatsText => stats == null ? "" : $"Spd {stats.speed}  Str {stats.strength}  Irr {stats.irrigation}  Ani {stats.animalHandling}";
 
+    // One short word for the status board.
+    public string Tag
+    {
+        get
+        {
+            if (job == null) return "[IDLE]";
+            switch (job.type)
+            {
+                case JobType.Tank: return "[TANK]";
+                case JobType.Feed: return "[FEED]";
+                case JobType.Plot: return "[WATER]";
+                default: return "[FIX]";
+            }
+        }
+    }
+
     public string Activity
     {
         get
