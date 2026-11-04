@@ -14,6 +14,8 @@ public class Technician : MonoBehaviour
     public float waterGiven = 30f;     // moisture added to a plot that is about to die
     public float walkSpeed = 3f;       // when there is nothing to do
     public float runSpeed = 8f;        // when he is on his way to a job
+    public float wanderRadius = 15f;   // how far from where he stands he strolls when there is nothing to do
+    public Vector2 pause = new Vector2(3f, 8f);     // seconds standing still between strolls
 
     public AvatarDatabase.Record stats;    // null for a worker placed by hand
 
@@ -22,6 +24,8 @@ public class Technician : MonoBehaviour
     Job job;
     Vector3 home;
     float timer;
+    float wanderTimer;
+    bool wandering;
 
     public bool IsFree => state == State.Waiting || state == State.Returning;
     public float StrengthFactor => stats != null ? stats.StrengthFactor : 1f;
@@ -49,6 +53,7 @@ public class Technician : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         home = transform.position;
         agent.speed = walkSpeed;
+        wanderTimer = Random.Range(pause.x, pause.y);
     }
 
     // The stats of this person scale how fast he moves and how well each kind of job goes.
@@ -90,8 +95,46 @@ public class Technician : MonoBehaviour
                 break;
 
             case State.Returning:
-                if (Arrived()) state = State.Waiting;
+                if (Arrived())
+                {
+                    state = State.Waiting;
+                    wandering = false;
+                    wanderTimer = Random.Range(pause.x, pause.y);
+                }
                 break;
+
+            case State.Waiting:
+                if (wandering)
+                {
+                    if (Arrived())
+                    {
+                        wandering = false;
+                        wanderTimer = Random.Range(pause.x, pause.y);
+                    }
+                }
+                else
+                {
+                    wanderTimer -= Time.deltaTime;
+                    if (wanderTimer <= 0f) Wander();
+                }
+                break;
+        }
+    }
+
+    // A short stroll from wherever he is standing, so he does not stand still all day.
+    void Wander()
+    {
+        Vector2 offset = Random.insideUnitCircle * wanderRadius;
+        Vector3 target = transform.position + new Vector3(offset.x, 0f, offset.y);
+
+        if (NavMesh.SamplePosition(target, out NavMeshHit hit, 3f, NavMesh.AllAreas))
+        {
+            agent.SetDestination(hit.position);
+            wandering = true;
+        }
+        else
+        {
+            wanderTimer = Random.Range(pause.x, pause.y);
         }
     }
 
