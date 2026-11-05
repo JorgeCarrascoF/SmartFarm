@@ -154,7 +154,6 @@ Packages/packages-lock.json linguist-generated
 
 # Executable/Installer
 *.apk                   lfs
-*.exe                   lfs
 
 # Documents
 *.pdf                   lfs
